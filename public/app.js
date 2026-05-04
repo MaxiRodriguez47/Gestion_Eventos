@@ -21,7 +21,8 @@ async function cargarEventos() {
                 <h3>${evento.titulo}</h3>
                 <p><strong>Estadio:</strong> ${evento.estadio}</p>
                 <p><strong>Fecha:</strong> ${fechaFormateada}</p>
-                <p><strong>Entradas Disp:</strong> ${evento.entradas_disp} / ${evento.capacidad_max}</p>
+                <p><strong>Entradas Disp:</strong> ${evento.entradas_disp} / ${evento.capacidad_max}</p> 
+                <button onclick="eliminarEvento(${evento.id})" class="btn-eliminar">Eliminar </button>
             `;
            contenedorEventos.appendChild(tarjeta);
         });
@@ -39,7 +40,8 @@ formulario.addEventListener('submit' ,async (e) =>{
         fecha: document.getElementById('fecha').value,
         estadio: document.getElementById('estadio').value,
         capacidad_max: document.getElementById('capacidad_max').value,
-        entradas_disp: document.getElementById('entradas_disp').value,
+        entradas_disp: document.getElementById('entradas_disp').value, 
+
     }; 
 
     try{
@@ -60,4 +62,25 @@ formulario.addEventListener('submit' ,async (e) =>{
         alert ('No se pudo conectar con el servidor');
     }
 }); 
-document.addEventListener('DOMContentLoaded', cargarEventos);
+document.addEventListener('DOMContentLoaded', cargarEventos); 
+// --- NUEVA LÓGICA: Eliminar un partido ---
+async function eliminarEvento(id) {
+    // Tiramos un cartelito para confirmar, por si el usuario hizo clic sin querer
+    if (confirm('¿Estás seguro de que querés borrar este partido?')) {
+        try {
+            const respuesta = await fetch(`${urlAPI}/${id}`, {
+                method: 'DELETE'
+            });
+
+            if (respuesta.ok) {
+                // Si se borró bien, volvemos a cargar la lista para que desaparezca
+                cargarEventos();
+            } else {
+                alert('No se pudo eliminar el partido.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al conectar con el servidor.');
+        }
+    }
+}

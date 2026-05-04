@@ -1,19 +1,29 @@
 const express = require('express');
 const router = express.Router();
 
-// Importamos TODAS las funciones del controlador
 const { obtenerEventos, crearEvento, actualizarEvento, eliminarEvento } = require('../controllers/controllers');
 
-// GET: Leer todos los datos
 router.get('/', obtenerEventos);
 
-// POST: Crear un dato nuevo
 router.post('/', crearEvento);
 
-// PUT: Actualizar un dato existente. Fijate que agregamos /:id en la URL
 router.put('/:id', actualizarEvento);
 
-// DELETE: Borrar un dato existente. También necesita el /:id
-router.delete('/:id', eliminarEvento);
+router.delete('/:id', eliminarEvento); 
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const resultado = await pool.query('DELETE FROM evento WHERE id = $1', [id]);
+        
+        if (resultado.rowCount === 0) {
+            return res.status(404).json({ message: 'Partido no encontrado' });
+        }
+        
+        res.json({ message: 'Partido eliminado exitosamente' });
+    } catch (error) {
+        console.error('Error al eliminar evento:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }
+});
 
 module.exports = router;
