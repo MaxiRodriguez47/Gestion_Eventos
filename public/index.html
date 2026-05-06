@@ -1,61 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion eventos deportivos</title>
+    <title>Gestión Eventos Deportivos</title>
     <link rel="stylesheet" href="style.css">
 </head> 
 <body> 
-    <div class="contenedor-principal">
-        <header>
-            <h1>Eventos Deportivos</h1>
-            <p>Panel de administracion de eventos deportivos</p>
-        </header>
-        <main>
-            <section class="seccion formulario">
-                <h2>Agregar Nuevo Partido</h2>
-                <form id="formulario-evento">
-                    <div class="grupo-input">
-                        <label for="titulo">Titulo del Partido</label>
-                        <input type="text" id="titulo" placeholder="Ej Final Relampago ">
-                    </div> 
-                    <div class="grupo-input">
-                        <label for="id_categoria">ID Categoria</label>
-                        <input type="number" id="id_categoria" placeholder="Ej:1">
-                    </div>
-                    <div class="grupo-input">
-                        <label for="fecha">Fecha y Hora</label>
-                        <input type="datetime-local" id="fecha" required>
-                    </div>
-                    <div class="grupo-input">
-                        <label for="estadio">Estadio/Cancha</label>
-                        <input type="text" id="estadio" placeholder="Ej Cancha">      
-                    </div>
-                    <div class="grupo-input">
-                        <label for="capacidad_max">Capacidad Maxima</label>
-                        <input type="number" id="capacidad_max" required>
-                    </div>
-                    <div class="grupo-input">
-                        <label for="entradas_disp">Entradas Disponibles</label>
-                        <input type="number" id="entradas_disp" required>
-                    </div>
-                    <button type="submit" id="btn-guardar"> Guardar Partidos</button>
-                </form>
-            </section>
+    <section id="pantalla-inicio" class="hero">
+        <div class="overlay"></div>
+        <div class="contenido-hero">
+            <h1>Eventos Deportivos </h1>
+            <p>Conectá, gestioná y potenciá tu club con las herramientas más avanzadas.</p>
+            <button id="btn-comenzar" class="btn-principal">Iniciar Sesion</button>
+        </div>
+    </section>
 
-            <section class="seccion-cartelera">
-                <h2>Cartelera Actual</h2>
-                <div id="contenedor-eventos" class="grilla-eventos">
-                    <p class="cargando">Cargando partidos...</p>
+    <section id="seccion-login" class="contenedor-login" style="display: none;">
+        <div class="caja-login">
+            <h2>Acceso al Sistema</h2>
+            <form id="formulario-login">
+                <div class="grupo-input">
+                    <label for="email_login">Email</label>
+                    <input type="email" id="email_login" placeholder="Ingresar un email" required>
                 </div>
-            </section>
-        </main> 
-        <footer>
-            <p>Sistema de Gestion de Eventos | Desarrollado por Maximiliano Rodriguez</p>
-        </footer>
-    <div> 
+                <div class="grupo-input">
+                    <label for="password_login">Contraseña</label>
+                    <input type="password" id="password_login" placeholder="Tu contraseña" required>
+                </div>
+                <button type="submit" id="btn-ingresar">Ingresar al Panel</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="app-principal" style="display: none;">
+        <div class="contenedor-principal">
+            <header>
+                <h1>Eventos Deportivos</h1>
+                <div class="nav-admin">
+                    <button id="btn-ver-cartelera" class="btn-nav">Ver Cartelera</button>
+                    <button id="btn-ir-cargar" class="btn-nav">Cargar Partido</button>
+                    <button id="btn-logout" class="btn-salir">Cerrar Sesión</button>
+                </div>
+            </header>
+
+            <main>
+                <section id="vista-formulario" class="seccion formulario" style="display: none;">
+                    <h2>Agregar Nuevo Partido</h2>
+                    <form id="formulario-evento">
+                        <div class="grupo-input">
+                            <label for="titulo">Título del Partido</label>
+                            <input type="text" id="titulo" placeholder="Ej: Final Relámpago">
+                        </div> 
+                        <div class="grupo-input">
+                            <label for="id_categoria">ID Categoría</label>
+                            <input type="number" id="id_categoria" placeholder="Ej: 1">
+                        </div>
+                        <div class="grupo-input">
+                            <label for="fecha">Fecha y Hora</label>
+                            <input type="datetime-local" id="fecha" required>
+                        </div>
+                        <div class="grupo-input">
+                            <label for="estadio">Estadio/Cancha</label>
+                            <input type="text" id="estadio" placeholder="Ej: Complejo 1">      
+                        </div>
+                        <div class="grupo-input">
+                            <label for="capacidad_max">Capacidad Máxima</label>
+                            <input type="number" id="capacidad_max" required>
+                        </div>
+                        <div class="grupo-input">
+                            <label for="entradas_disp">Entradas Disponibles</label>
+                            <input type="number" id="entradas_disp" required>
+                        </div>
+                        <button type="submit" id="btn-guardar">Guardar Partido</button>
+                    </form>
+                </section>
+
+                <section id="vista-cartelera" class="seccion-cartelera">
+                    <h2>Cartelera Actual</h2>
+                    <div id="contenedor-eventos" class="grilla-eventos">
+                        <p class="cargando">Cargando partidos...</p>
+                    </div>
+                </section>
+            </main> 
+
+            <footer>
+                <p>Sistema de Gestión de Eventos | Desarrollado por Maximiliano Rodríguez</p>
+            </footer>
+        </div>
+    </div>
    
-       <script src="app.js"></script> 
+    <script src="app.js"></script> 
 </body>
 </html>
