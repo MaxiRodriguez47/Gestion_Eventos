@@ -1,7 +1,11 @@
 # Gestion_Eventos
 Se trata de una app para gestionar eventos deportivos
+
+
 Explica que es un servidor web y como funciona el ciclo request-response
 Un servidor web es un programa que está siempre escuchando peticiones a través de internet o una red. En el ciclo request-response, un cliente envía un "Request" (petición) pidiendo algo específico. El servidor procesa esa solicitud, busca en la base de datos si es necesario, y le devuelve un "Response" (respuesta).
+
+
 ¿Qué es Express y por qué lo usamos en lugar de usar solo Node.js?
 Express es un framework (marco de trabajo) minimalista construido sobre Node.js. Lo usamos porque simplifica y agiliza muchísimo la creación de servidores web. Mientras que en Node puro hacer un enrutamiento (URLs) o procesar datos JSON lleva mucho código manual y complejo.
 
