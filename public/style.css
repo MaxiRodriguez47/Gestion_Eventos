@@ -59,23 +59,24 @@ h2 {
     color: #2c3e50;
     font-size: 1.5rem;
 }
+
 /* --- ESTILOS DEL FORMULARIO ALINEADO --- */
 .grupo-input {
     display: flex;
-    align-items: center; /* Centra el texto verticalmente con la caja */
+    align-items: center;
     margin-bottom: 15px;
 }
 
 .grupo-input label {
-    width: 170px; /* Este es el secreto: todas las etiquetas miden igual */
-    min-width: 170px; /* Asegura que no se achiquen */
+    width: 170px;
+    min-width: 170px;
     font-weight: 600;
     color: #555;
-    margin-right: 10px; /* Un pequeño espacio antes de la caja */
+    margin-right: 10px;
 }
 
 .grupo-input input {
-    flex: 1; /* Hace que la cajita ocupe todo el espacio sobrante a la derecha */
+    flex: 1;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -87,8 +88,6 @@ h2 {
     outline: none;
     border-color: #3498db;
 }
-
-
 
 button {
     width: 100%;
@@ -155,7 +154,6 @@ button:active {
     padding: 20px;
 } 
 
-
 .btn-eliminar {
     background-color: #e74c3c;
     margin-top: 15px;
@@ -168,6 +166,7 @@ button:active {
 .btn-eliminar:hover {
     background-color: #c0392b;
 } 
+
 footer {
     background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
     color: white;
@@ -183,10 +182,11 @@ footer p {
     opacity: 0.9;
     font-weight: 300;
 } 
+
 /* --- ESTILOS DE LA LANDING (HERO) --- */
 .hero {
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1530549387074-d562490b2e30?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    background: url('foto-principal.png') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -198,7 +198,7 @@ footer p {
 .overlay {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Oscurece la imagen para leer el texto */
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .contenido-hero {
@@ -212,7 +212,7 @@ footer p {
 }
 
 .contenido-hero h1 span {
-    color: #a29bfe; /* Color violeta suave */
+    color: #a29bfe;
 }
 
 .btn-principal {
@@ -225,29 +225,99 @@ footer p {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    width: auto; 
 }
 
 .btn-principal:hover {
     transform: scale(1.05);
 }
 
-/* --- ESTILO LOGIN --- */
+
+.header-landing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 30px;
+    z-index: 20; 
+    display: flex;
+    justify-content: flex-end; 
+    
+    background: transparent; 
+    box-shadow: none;
+    border-radius: 0;
+}
+.botones-auth {
+    display: flex;
+    gap: 10px; 
+}
+
+.btn-transparente {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 6px 15px; 
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.85rem; 
+    cursor: pointer;
+    transition: background 0.3s;
+    width: auto;
+    margin-top: 0;
+}
+
+.btn-transparente:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-color {
+    background: #a29bfe; 
+    color: white;
+    border: none;
+    padding: 6px 15px; 
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.85rem; 
+    cursor: pointer;
+    transition: background 0.3s;
+    width: auto;
+    margin-top: 0;
+}
+
+.btn-color:hover {
+    background: #6c5ce7;
+}
+
+
+/* --- ESTILO LOGIN Y REGISTRO CON FOTO DE FONDO --- */
 .contenedor-login {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f2f5;
+    /* CAMBIO CLAVE: Arreglé el error de tipeo (decía prinicipal.png) */
+    background: url('foto-principal.png') no-repeat center center/cover;
+    position: relative;
+}
+
+.contenedor-login::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: 1;
 }
 
 .caja-login {
     background: white;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     width: 100%;
     max-width: 400px;
-} 
+    z-index: 10; 
+}
+
 .botones-nav {
     display: flex;
     gap: 10px;
@@ -262,8 +332,56 @@ footer p {
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    width: auto;
 }
 
 .btn-nav:hover {
     background-color: #2980b9;
+} 
+
+/* --- AJUSTE PARA FORMULARIOS CHICOS (LOGIN Y REGISTRO) --- */
+.caja-login .grupo-input {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    width: 100%; 
+    margin-bottom: 20px;
+}
+
+.caja-login .grupo-input label {
+    width: 100%;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.caja-login .grupo-input input {
+    width: 100%; 
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.caja-login .grupo-input input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+} 
+
+/* --- ESTILO PARA EL BOTÓN DE CERRAR SESIÓN --- */
+.btn-salir {
+    background-color: #e74c3c; 
+    color: white;
+    border: none;
+    padding: 10px 15px; 
+    border-radius: 5px;
+    font-size: 0.95rem; 
+    cursor: pointer;
+    width: auto; 
+    transition: background 0.3s;
+}
+
+.btn-salir:hover {
+    background-color: #c0392b; 
 }

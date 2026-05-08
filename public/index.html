@@ -8,11 +8,19 @@
 </head> 
 <body> 
     <section id="pantalla-inicio" class="hero">
+        
+        <header class="header-landing">
+            <div class="botones-auth">
+                <button id="btn-nav-registrarse" class="btn-transparente">Registrarse</button>
+                <button id="btn-nav-login" class="btn-color">Iniciar Sesión</button>
+            </div>
+        </header>
+
         <div class="overlay"></div>
         <div class="contenido-hero">
             <h1>Eventos Deportivos </h1>
             <p>Conectá, gestioná y potenciá tu club con las herramientas más avanzadas.</p>
-            <button id="btn-comenzar" class="btn-principal">Iniciar Sesion</button>
+            <button id="btn-comenzar" class="btn-principal">Comenzar</button>
         </div>
     </section>
 
@@ -29,6 +37,28 @@
                     <input type="password" id="password_login" placeholder="Tu contraseña" required>
                 </div>
                 <button type="submit" id="btn-ingresar">Ingresar al Panel</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="seccion-registro" class="contenedor-login" style="display: none;">
+        <div class="caja-login">
+            <h2>Crear Cuenta Nueva</h2>
+            <form id="formulario-registro">
+                <div class="grupo-input">
+                    <label for="nombre_registro">Nombre</label>
+                    <input type="text" id="nombre_registro" placeholder="Ej: Maxi" required>
+                </div>
+                <div class="grupo-input">
+                    <label for="email_registro">Email</label>
+                    <input type="email" id="email_registro" placeholder="maxi@gmail.com" required>
+                </div>
+                <div class="grupo-input">
+                    <label for="password_registro">Contraseña</label>
+                    <input type="password" id="password_registro" placeholder="Creá una contraseña" required>
+                </div>
+                <button type="submit">Registrarme</button>
+                <button type="button" id="btn-volver-registro" style="background-color: #95a5a6; margin-top: 10px;">Volver al Inicio</button>
             </form>
         </div>
     </section>
